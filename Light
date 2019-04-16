@@ -1,0 +1,21 @@
+int photoCellPin = A0;
+int led = D7;
+
+void setup() {
+    
+    pinMode(led, OUTPUT);
+}
+
+void loop() {
+    
+    digitalWrite(led, HIGH);  // LED is turned on
+    
+    String light = String(analogRead (photoCellPin));
+    Particle.publish("light", light, PRIVATE);
+    delay(30000);             // Delay of 30 seconds
+    
+    
+    digitalWrite(led, LOW);   // Led is turned off
+    delay(30000);             // Delay of 30 seconds
+    
+}
